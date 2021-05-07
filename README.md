@@ -27,6 +27,7 @@ Behavioral Patterns are about identifying common communication patterns between 
 Recommended Reading:
 
 - [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern)
+- [Design patterns](https://refactoring.guru/design-patterns)
 
 ## MIT
 
