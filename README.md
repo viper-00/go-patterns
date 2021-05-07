@@ -4,15 +4,21 @@ list of Go design patterns
 
 ### Creational Patterns
 
-Creational Patterns provide the capability to create objects based on a required criterion and in a controlled way.
+Creational patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
+
+#### [Factory Method](./creational/factoryMethod/factory_method.go)
+
+Provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. 
 
 #### [Abstract Factory](./creational/abstractFactory/abstract_factory.go)
 
-The pattern provide an interface for creating families of related or dependent objects without specifiying their concrete classes.
+Provides an interface for creating families of related or dependent objects without specifiying their concrete classes.
 
 #### [Builder](./creational/builder/builder.go)
 
 The pattern produce different types and representations of an object using the same construction code.
+
+#### [Prototype](./creational/prototype/prototype.go)
 
 ### Structural Patterns
 
