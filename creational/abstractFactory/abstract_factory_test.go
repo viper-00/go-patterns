@@ -12,4 +12,8 @@ func TestPattern(t *testing.T) {
 	linuxButton := linux.createButton()
 
 	t.Log(linuxButton.print())
+
+	linuxCheckbox := linux.createCheckbox()
+
+	t.Log(linuxCheckbox.print())
 }

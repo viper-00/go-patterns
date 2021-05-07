@@ -10,6 +10,41 @@ provide an interface for creating families of related or dependent objects
 without specifiying their concrete classes.
 */
 
+type GUIFactroy interface {
+	createButton() Button
+	createCheckbox() Checkbox
+}
+
+type LinuxFactory struct{}
+
+func (linux *LinuxFactory) createButton() Button {
+	return &LinuxButton{}
+}
+
+func (linux *LinuxFactory) createCheckbox() Checkbox {
+	return &LinuxCheckbox{}
+}
+
+type WindowFactory struct{}
+
+func (window *WindowFactory) createButton() Button {
+	return &WindowButton{}
+}
+
+func (window *WindowFactory) createCheckbox() Checkbox {
+	return &WindowCheckbox{}
+}
+
+type MacosFactory struct{}
+
+func (macos *MacosFactory) createButton() Button {
+	return &MacosButton{}
+}
+
+func (macos *MacosFactory) createCheckbox() Checkbox {
+	return &MacosCheckbox{}
+}
+
 type Button interface {
 	print() string
 }
@@ -23,44 +58,44 @@ func (linux *LinuxButton) print() string {
 type WindowButton struct{}
 
 func (window *WindowButton) print() string {
-	return "Render a button in a window style"
+	return "Render a button in a Window style"
 }
 
-type MacOsButton struct{}
+type MacosButton struct{}
 
-func (macos *MacOsButton) print() string {
-	return "Render a button in a macos style"
+func (macos *MacosButton) print() string {
+	return "Render a button in a Macos style"
 }
 
-type GUIFactroy interface {
-	createButton() Button
+type Checkbox interface {
+	print() string
 }
 
-type Linux struct{}
+type LinuxCheckbox struct{}
 
-func (linux *Linux) createButton() Button {
-	return &LinuxButton{}
+func (linux *LinuxCheckbox) print() string {
+	return "Render a checkbox in a Linux style"
 }
 
-type Window struct{}
+type WindowCheckbox struct{}
 
-func (window *Window) createButton() Button {
-	return &WindowButton{}
+func (window *WindowCheckbox) print() string {
+	return "Render a checkbox in a Window style"
 }
 
-type Macos struct{}
+type MacosCheckbox struct{}
 
-func (macos *Macos) createButton() Button {
-	return &MacOsButton{}
+func (macos *MacosCheckbox) print() string {
+	return "Render a checkbox in a Macos style"
 }
 
 func GetGUIFactory(os string) (GUIFactroy, error) {
 	if os == "linux" {
-		return &Linux{}, nil
+		return &LinuxFactory{}, nil
 	} else if os == "window" {
-		return &Window{}, nil
+		return &WindowFactory{}, nil
 	} else if os == "macos" {
-		return &Macos{}, nil
+		return &MacosFactory{}, nil
 	}
 
 	return nil, fmt.Errorf("wrong os type passed")
