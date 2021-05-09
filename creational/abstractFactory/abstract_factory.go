@@ -5,10 +5,10 @@ import "fmt"
 // wiki: https://en.wikipedia.org/wiki/Abstract_factory_pattern
 
 /*
-Abstract Factory is a creational design pattern, which solves the problem of
-provide an interface for creating families of related or dependent objects
-without specifiying their concrete classes.
-*/
+ * Abstract Factory is a creational design pattern, which solves the problem of
+ * provide an interface for creating families of related or dependent objects
+ * without specifiying their concrete classes.
+ */
 
 type GUIFactroy interface {
 	createButton() Button

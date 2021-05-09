@@ -20,6 +20,8 @@ The pattern produce different types and representations of an object using the s
 
 #### [Prototype](./creational/prototype/prototype.go)
 
+Copy existing objects without making code dependent on classes.
+
 ### Structural Patterns
 
 Structural Patterns are about organizing different classes and objects to from larger structures and provide new functionality.
