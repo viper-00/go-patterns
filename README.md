@@ -36,6 +36,8 @@ Structural Patterns are about organizing different classes and objects to from l
 
 #### [Bridge](./structural/bridge/bridge.go)
 
+Split a large class or a set of closely related classes into two separate hierarchies-abstraction and implementation, which can be developed independently of each other.
+
 ### Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
