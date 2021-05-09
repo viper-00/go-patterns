@@ -22,6 +22,10 @@ The pattern produce different types and representations of an object using the s
 
 Copy existing objects without making code dependent on classes.
 
+#### [Singleton](./creational/singleton/singleton.go)
+
+Ensure a class has only one instance, and provide a global point of access to it.
+
 ### Structural Patterns
 
 Structural Patterns are about organizing different classes and objects to from larger structures and provide new functionality.
