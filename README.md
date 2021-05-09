@@ -30,6 +30,12 @@ Ensure a class has only one instance, and provide a global point of access to it
 
 Structural Patterns are about organizing different classes and objects to from larger structures and provide new functionality.
 
+#### [Adapter](./structural/adapter/adapter.go)
+
+ Allows objects with incompatible interfaces to collaborate.
+
+#### [Bridge](./structural/bridge/bridge.go)
+
 ### Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
