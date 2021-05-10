@@ -32,7 +32,7 @@ Structural Patterns are about organizing different classes and objects to from l
 
 #### [Adapter](./structural/adapter/adapter.go)
 
- Allows objects with incompatible interfaces to collaborate.
+Allows objects with incompatible interfaces to collaborate.
 
 #### [Bridge](./structural/bridge/bridge.go)
 
@@ -41,6 +41,10 @@ Split a large class or a set of closely related classes into two separate hierar
 #### [Composite](./structural/composite/composite.go)
 
 Compose objects into tree structures and then work with these structures as if they were individual objects.
+
+#### [Decorator](./structural/decorator/decorator.go)
+
+Attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
 
 ### Behavioral Patterns
 

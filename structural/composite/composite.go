@@ -9,7 +9,7 @@ import "fmt"
  * then work with these structures as if they were individual objects.
  */
 
-// Leaf
+// Leaf: common interface
 type node interface {
 	search(string) bool
 }
