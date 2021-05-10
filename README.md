@@ -46,6 +46,10 @@ Compose objects into tree structures and then work with these structures as if t
 
 Attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
 
+#### [Facade](./structural/facade/facade.go)
+
+Provides a simplified interface to a library, a framework, or any other complex set of classes.
+
 ### Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
