@@ -50,6 +50,10 @@ Attach new behaviors to objects by placing these objects inside special wrapper 
 
 Provides a simplified interface to a library, a framework, or any other complex set of classes.
 
+#### [Flyweight](./structural/flyweight/flyweight.go)
+
+Fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
+
 ### Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
@@ -60,6 +64,7 @@ Recommended Reading:
 
 - [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern)
 - [Design patterns](https://refactoring.guru/design-patterns)
+- [Golang by example](https://golangbyexample.com/)
 
 ## MIT
 
