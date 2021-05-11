@@ -54,6 +54,10 @@ Provides a simplified interface to a library, a framework, or any other complex 
 
 Fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
 
+#### [Proxy](./structural/proxy/proxy.go)
+
+Provide a surrogate/substitute or placeholder for another object to control access to it.
+
 ### Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
