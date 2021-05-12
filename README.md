@@ -62,6 +62,14 @@ Provide a surrogate/substitute or placeholder for another object to control acce
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
 
+#### [Chain of Responsibility](./behavioural/chainOfResponsibility/chain_of_responsibility.go)
+
+Pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
+
+#### [Command](./behavioural/command/command.go)
+
+
+
 ## End
 
 Recommended Reading:
