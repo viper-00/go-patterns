@@ -68,6 +68,10 @@ Pass requests along a chain of handlers. Upon receiving a request, each handler 
 
 #### [Command](./behavioural/command/command.go)
 
+Turns a request into a stand-alone object that contains all information about the request. This transformation pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
+
+#### [Iterator](./behavioural/iterator/iterator.go)
+
 
 
 ## End
