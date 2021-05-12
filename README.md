@@ -72,6 +72,8 @@ Turns a request into a stand-alone object that contains all information about th
 
 #### [Iterator](./behavioural/iterator/iterator.go)
 
+Traverse elements of a collection without exposing its underlying representation(list, stack, tree, etc).
+
 
 
 ## End
