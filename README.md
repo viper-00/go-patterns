@@ -62,17 +62,23 @@ Provide a surrogate/substitute or placeholder for another object to control acce
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
 
-#### [Chain of Responsibility](./behavioural/chainOfResponsibility/chain_of_responsibility.go)
+#### [Chain of Responsibility](./behavioral/chainOfResponsibility/chain_of_responsibility.go)
 
 Pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
 
-#### [Command](./behavioural/command/command.go)
+#### [Command](./behavioral/command/command.go)
 
 Turns a request into a stand-alone object that contains all information about the request. This transformation pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
 
-#### [Iterator](./behavioural/iterator/iterator.go)
+#### [Iterator](./behavioral/iterator/iterator.go)
 
 Traverse elements of a collection without exposing its underlying representation(list, stack, tree, etc).
+
+#### [Mediator](./behavioral/mediator/mediator.go)
+
+Reduces coupling between components of a program by making them communicate indirectly, through a speacial mediator object.
+
+#### [Memento](./behavioral/memento/memento.go)
 
 
 
