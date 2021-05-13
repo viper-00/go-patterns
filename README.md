@@ -82,6 +82,10 @@ Reduces coupling between components of a program by making them communicate indi
 
 Save and restore the previous state of an object without revealing the details of its implementation.
 
+#### [Observer](./behavioral/observer/observer.go)
+
+Define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
+
 ## End
 
 Recommended Reading:
