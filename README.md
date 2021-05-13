@@ -80,7 +80,7 @@ Reduces coupling between components of a program by making them communicate indi
 
 #### [Memento](./behavioral/memento/memento.go)
 
-
+Save and restore the previous state of an object without revealing the details of its implementation.
 
 ## End
 
