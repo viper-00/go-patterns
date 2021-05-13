@@ -86,6 +86,10 @@ Save and restore the previous state of an object without revealing the details o
 
 Define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
 
+#### [State](./behavioral/state/state.go)
+
+Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
+
 ## End
 
 Recommended Reading:
