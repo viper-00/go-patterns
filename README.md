@@ -90,6 +90,18 @@ Define a subscription mechanism to notify multiple objects about any events that
 
 Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
+#### [Strategy](./behavioral/strategy/strategy.go)
+
+Define a family of algorithms, put each of time into a separate class, and make their objects interchangeable.
+
+#### [Template Method](./behavioral/templateMethod/template_method.go)
+
+Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+
+#### [Visitor](./behavioral/visitor/visitor.go)
+
+Separate algorithms from the objects on which they operate.
+
 ## End
 
 Recommended Reading:
