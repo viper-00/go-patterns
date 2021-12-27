@@ -1,34 +1,26 @@
 package singleton
 
 import (
-	"fmt"
 	"sync"
 )
 
 // wiki: https://en.wikipedia.org/wiki/Singleton_pattern
+//
+// Restricts instantiation of a type to one object
 
-/*
- * Singleton is a creational design pattern that ensure a class has only one instance,
- * and provide a global point of access to it.
- */
+type singleton map[string]string
 
-type single struct{}
+var (
+	once     sync.Once
+	instance singleton
+)
 
-var singleInstance *single
-var once sync.Once
-
-func GetInstance() *single {
-	if singleInstance == nil {
+func New() singleton {
+	if instance == nil {
 		once.Do(
 			func() {
-				// creating single instance now...
-				fmt.Println("Creating single instance now.")
-				singleInstance = &single{}
+				instance = make(singleton)
 			})
-	} else {
-		// single instance already created
-		fmt.Println("Single instance already created.")
 	}
-
-	return singleInstance
+	return instance
 }

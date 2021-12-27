@@ -6,15 +6,15 @@ import (
 )
 
 func TestPattern(t *testing.T) {
-	normalBuilder, err1 := GetBuilder("normal")
+	normalBuilder, err1 := GetBuilder(normal)
 
 	if err1 != nil {
-		t.Error("test pattern has mistake!")
+		t.Error(err1)
 	}
 
-	iglooBuilder, err2 := GetBuilder("igloo")
+	iglooBuilder, err2 := GetBuilder(igloo)
 	if err2 != nil {
-		t.Error("test pattern has mistake!")
+		t.Error(err2)
 	}
 
 	director := NewDirector(normalBuilder)

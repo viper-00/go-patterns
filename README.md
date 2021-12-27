@@ -1,106 +1,124 @@
 # Go Patterns
 
-list of Go design patterns
+A curated collection of idiomatic design & application patterns for Go language.
 
-### Creational Patterns
+## Creational Patterns
 
 Creational patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
 
-#### [Factory Method](./creational/factoryMethod/factory_method.go)
+### [Abstract Factory](./creational/abstractFactory/abstract_factory.go)
 
-Provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. 
+Provides an interface for creating families of related objects.
 
-#### [Abstract Factory](./creational/abstractFactory/abstract_factory.go)
+### [Factory Method](./creational/factoryMethod/factory_method.go)
 
-Provides an interface for creating families of related or dependent objects without specifiying their concrete classes.
+Defers instantiation of an object to a specialized function for creating instances.
 
-#### [Builder](./creational/builder/builder.go)
+### [Builder](./creational/builder/builder.go)
 
-The pattern produce different types and representations of an object using the same construction code.
+Builds a complex object using simple objects.
 
-#### [Prototype](./creational/prototype/prototype.go)
+### [Singleton](./creational/singleton/singleton.go)
 
-Copy existing objects without making code dependent on classes.
+Restricts instantiation of a type to one object.
 
-#### [Singleton](./creational/singleton/singleton.go)
+### [Object Pool](./creational/objectPool/object_pool.go)
 
-Ensure a class has only one instance, and provide a global point of access to it.
+Instantiates and maintains a group of objects instances of the same type.
 
-### Structural Patterns
+### [Prototype](./creational/prototype/prototype.go)
+
+When the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+
+## Structural Patterns
 
 Structural Patterns are about organizing different classes and objects to from larger structures and provide new functionality.
 
-#### [Adapter](./structural/adapter/adapter.go)
+### [Adapter](./structural/adapter/adapter.go)
 
 Allows objects with incompatible interfaces to collaborate.
 
-#### [Bridge](./structural/bridge/bridge.go)
+### [Bridge](./structural/bridge/bridge.go)
 
 Split a large class or a set of closely related classes into two separate hierarchies-abstraction and implementation, which can be developed independently of each other.
 
-#### [Composite](./structural/composite/composite.go)
+### [Composite](./structural/composite/composite.go)
 
 Compose objects into tree structures and then work with these structures as if they were individual objects.
 
-#### [Decorator](./structural/decorator/decorator.go)
+### [Decorator](./structural/decorator/decorator.go)
 
 Attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
 
-#### [Facade](./structural/facade/facade.go)
+### [Facade](./structural/facade/facade.go)
 
 Provides a simplified interface to a library, a framework, or any other complex set of classes.
 
-#### [Flyweight](./structural/flyweight/flyweight.go)
+### [Flyweight](./structural/flyweight/flyweight.go)
 
 Fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
 
-#### [Proxy](./structural/proxy/proxy.go)
+### [Proxy](./structural/proxy/proxy.go)
 
 Provide a surrogate/substitute or placeholder for another object to control access to it.
 
-### Behavioral Patterns
+## Behavioral Patterns
 
 Behavioral Patterns are about identifying common communication patterns between objects and realize these patterns.
 
-#### [Chain of Responsibility](./behavioral/chainOfResponsibility/chain_of_responsibility.go)
+### [Chain of Responsibility](./behavioral/chainOfResponsibility/chain_of_responsibility.go)
 
 Pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
 
-#### [Command](./behavioral/command/command.go)
+### [Command](./behavioral/command/command.go)
 
 Turns a request into a stand-alone object that contains all information about the request. This transformation pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
 
-#### [Iterator](./behavioral/iterator/iterator.go)
+### [Iterator](./behavioral/iterator/iterator.go)
 
 Traverse elements of a collection without exposing its underlying representation(list, stack, tree, etc).
 
-#### [Mediator](./behavioral/mediator/mediator.go)
+### [Mediator](./behavioral/mediator/mediator.go)
 
 Reduces coupling between components of a program by making them communicate indirectly, through a speacial mediator object.
 
-#### [Memento](./behavioral/memento/memento.go)
+### [Memento](./behavioral/memento/memento.go)
 
 Save and restore the previous state of an object without revealing the details of its implementation.
 
-#### [Observer](./behavioral/observer/observer.go)
+### [Observer](./behavioral/observer/observer.go)
 
 Define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
 
-#### [State](./behavioral/state/state.go)
+### [State](./behavioral/state/state.go)
 
 Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-#### [Strategy](./behavioral/strategy/strategy.go)
+### [Strategy](./behavioral/strategy/strategy.go)
 
 Define a family of algorithms, put each of time into a separate class, and make their objects interchangeable.
 
-#### [Template Method](./behavioral/templateMethod/template_method.go)
+### [Template Method](./behavioral/templateMethod/template_method.go)
 
 Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
 
 #### [Visitor](./behavioral/visitor/visitor.go)
 
 Separate algorithms from the objects on which they operate.
+
+## Synchronization Pattern
+
+## Concurrency-Patterns
+
+## Messageing-Patterns
+
+## Stability-Patterns
+
+## Profiling-Patterns
+
+## Idioms
+
+## Anti-Patterns
 
 ## End
 
@@ -110,6 +128,6 @@ Recommended Reading:
 - [Design patterns](https://refactoring.guru/design-patterns)
 - [Golang by example](https://golangbyexample.com/)
 
-## MIT
+## License
 
-[Mit License](./LICENSE)
+[MIT](./LICENSE)

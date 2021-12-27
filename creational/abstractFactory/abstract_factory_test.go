@@ -3,17 +3,22 @@ package abstractFactory
 import "testing"
 
 func TestPattern(t *testing.T) {
-	linux, err := GetGUIFactory("linux")
+	linux, err := GetGUIFactory(Linux)
 
 	if err != nil {
-		t.Error("test pattern has mistake!")
+		t.Error(err)
 	}
 
-	linuxButton := linux.createButton()
+	_, ok := linux.(*LinuxFactory)
+	if !ok {
+		t.Error("linux factory is not exist.")
+	} else {
+		linuxButton := linux.createButton()
 
-	t.Log(linuxButton.print())
+		t.Log(linuxButton.print())
 
-	linuxCheckbox := linux.createCheckbox()
+		linuxCheckbox := linux.createCheckbox()
 
-	t.Log(linuxCheckbox.print())
+		t.Log(linuxCheckbox.print())
+	}
 }

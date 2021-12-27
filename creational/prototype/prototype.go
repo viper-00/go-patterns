@@ -3,18 +3,14 @@ package prototype
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Prototype_pattern
-
-/*
- * Prototype is a creational design pattern that copy existing objects
- * without making code dependent on classes.
- */
+//
+// When the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
 
 type Node interface {
 	print(string)
 	clone() Node
 }
 
-// file
 type File struct {
 	name string
 }
@@ -27,7 +23,6 @@ func (f *File) clone() Node {
 	return &File{name: f.name + "_clone"}
 }
 
-// folder
 type Folder struct {
 	children []Node
 	name     string

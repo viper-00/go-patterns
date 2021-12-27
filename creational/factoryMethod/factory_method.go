@@ -3,12 +3,15 @@ package factorymethod
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Factory_method_pattern
+//
+// Defers instantiation of an object to a specialized function for creating instances.
 
-/**
- * Factory Method is a creational design pattern that provides
- * an interface for creating objects in a superclass, but allows
- * subclasses to alter the type of objects that will be created.
- */
+type platform int
+
+var (
+	window platform = 1
+	web    platform = 2
+)
 
 type Dislog interface {
 	createButton() Button
@@ -17,13 +20,13 @@ type Dislog interface {
 type WindowDialog struct{}
 
 func (window *WindowDialog) createButton() Button {
-	return &WindowButton{}
+	return new(WindowButton)
 }
 
 type WebDialog struct{}
 
 func (web *WebDialog) createButton() Button {
-	return &WebButton{}
+	return new(WebButton)
 }
 
 type Button interface {
@@ -51,12 +54,13 @@ func (web *WebButton) onClick() bool {
 	return true
 }
 
-func GetDislogStyle(platform string) (Dislog, error) {
-	if platform == "window" {
-		return &WindowDialog{}, nil
-	} else if platform == "web" {
-		return &WebDialog{}, nil
+func GetDislogStyle(desktop platform) (Dislog, error) {
+	switch desktop {
+	case window:
+		return new(WindowDialog), nil
+	case web:
+		return new(WebDialog), nil
+	default:
+		return nil, fmt.Errorf(fmt.Sprintf("Platform of type %d is not exist", desktop))
 	}
-
-	return nil, fmt.Errorf("wrong platform type passed")
 }

@@ -3,33 +3,35 @@ package builder
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Builder_pattern
+//
+// Builds a complex object using simple objects.
 
-/*
- * Builder is a creational design pattern that produce different types
- * and representations of an object using the same construction code.
- */
+type bType int
 
-// builder interface
+const (
+	normal bType = 1
+	igloo  bType = 2
+)
+
 type Builder interface {
 	setWindowType()
 	setDoorType()
 	setNumFloor()
-	getHouse() House
+	getHouse() *House
 }
 
-// concrete builder
 type NormalBuilder struct {
-	windoeType string
+	windowType string
 	doorType   string
 	floor      int
 }
 
 func NewNormalBuilder() *NormalBuilder {
-	return &NormalBuilder{}
+	return new(NormalBuilder)
 }
 
 func (normal *NormalBuilder) setWindowType() {
-	normal.windoeType = "normal window"
+	normal.windowType = "normal window"
 }
 
 func (normal *NormalBuilder) setDoorType() {
@@ -37,30 +39,29 @@ func (normal *NormalBuilder) setDoorType() {
 }
 
 func (normal *NormalBuilder) setNumFloor() {
-	normal.floor = 3
+	normal.floor = 2
 }
 
-func (normal *NormalBuilder) getHouse() House {
-	return House{
-		windowType: normal.windoeType,
+func (normal *NormalBuilder) getHouse() *House {
+	return &House{
+		windowType: normal.windowType,
 		doorType:   normal.doorType,
 		floor:      normal.floor,
 	}
 }
 
-// concrete builder
 type IglooBuilder struct {
-	windoeType string
+	windowType string
 	doorType   string
 	floor      int
 }
 
 func NewIglooBuilder() *IglooBuilder {
-	return &IglooBuilder{}
+	return new(IglooBuilder)
 }
 
 func (igloo *IglooBuilder) setWindowType() {
-	igloo.windoeType = "igloo window"
+	igloo.windowType = "igloo window"
 }
 
 func (igloo *IglooBuilder) setDoorType() {
@@ -71,22 +72,20 @@ func (igloo *IglooBuilder) setNumFloor() {
 	igloo.floor = 1
 }
 
-func (igloo *IglooBuilder) getHouse() House {
-	return House{
-		windowType: igloo.windoeType,
+func (igloo *IglooBuilder) getHouse() *House {
+	return &House{
+		windowType: igloo.windowType,
 		doorType:   igloo.doorType,
 		floor:      igloo.floor,
 	}
 }
 
-// product
 type House struct {
 	windowType string
 	doorType   string
 	floor      int
 }
 
-// director
 type Director struct {
 	builder Builder
 }
@@ -101,20 +100,20 @@ func (d *Director) setBuilder(b Builder) {
 	d.builder = b
 }
 
-func (d *Director) builderHouse() House {
+func (d *Director) builderHouse() *House {
 	d.builder.setWindowType()
 	d.builder.setDoorType()
 	d.builder.setNumFloor()
 	return d.builder.getHouse()
 }
 
-// get a builder
-func GetBuilder(builderType string) (Builder, error) {
-	if builderType == "normal" {
-		return &NormalBuilder{}, nil
-	} else if builderType == "igloo" {
-		return &IglooBuilder{}, nil
+func GetBuilder(typ bType) (Builder, error) {
+	switch typ {
+	case normal:
+		return new(NormalBuilder), nil
+	case igloo:
+		return new(IglooBuilder), nil
+	default:
+		return nil, fmt.Errorf(fmt.Sprintf("Builder of type %d is not exist", typ))
 	}
-
-	return nil, fmt.Errorf("wrong builder type passed")
 }

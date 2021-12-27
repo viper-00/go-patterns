@@ -5,8 +5,11 @@ import (
 )
 
 func TestPattern(t *testing.T) {
-
-	for i := 0; i < 30; i++ {
-		go GetInstance()
+	s1 := New()
+	var expectedKey, expectedValue string = "this", "that"
+	s1[expectedKey] = expectedValue
+	s2 := New()
+	if actualValue := s2[expectedKey]; actualValue != expectedValue {
+		t.Errorf("Got %v expected %v", actualValue, expectedValue)
 	}
 }

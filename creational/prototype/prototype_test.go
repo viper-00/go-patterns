@@ -3,33 +3,39 @@ package prototype
 import "testing"
 
 func TestPattern(t *testing.T) {
-	golang := &File{name: "go"}
-	java := &File{name: "java"}
-	py := &File{name: "python"}
-	sub := &File{name: "sub"}
+	d1 := &File{name: "d1"}
+	d2 := &File{name: "d2"}
+	d3 := &File{name: "d3"}
+	d4 := &File{name: "d4"}
 
-	goFolder := &Folder{
-		children: []Node{golang},
-		name:     "goFolder",
+	d1Folder := &Folder{
+		children: []Node{d1},
+		name:     "d1Folder",
 	}
 
 	superFolder := &Folder{
-		children: []Node{goFolder, java, py},
+		children: []Node{d1Folder, d2, d3},
 		name:     "superFolder",
 	}
 
 	supersuperFolder := &Folder{
-		children: []Node{superFolder, sub},
+		children: []Node{superFolder, d4},
 		name:     "supersuperFolder",
 	}
 
-	t.Log("printing hierarchy for super Folder:")
-	superFolder.print(" ")
+	if superFolder != nil {
+		t.Log("printing hierarchy for super Folder:")
+		superFolder.print(" ")
+	}
+
+	if supersuperFolder != nil {
+		t.Log("printing hierarchy for super super Folder:")
+		supersuperFolder.print(" ")
+	}
 
 	cloneFolder := superFolder.clone()
-	t.Log("printing hierarchy for clone Folder:")
-	cloneFolder.print(" ")
-
-	t.Log("printing hierarchy for super super Folder:")
-	supersuperFolder.print(" ")
+	if cloneFolder != nil {
+		t.Log("printing hierarchy for clone Folder:")
+		cloneFolder.print(" ")
+	}
 }

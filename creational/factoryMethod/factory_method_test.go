@@ -3,15 +3,15 @@ package factorymethod
 import "testing"
 
 func TestPattern(t *testing.T) {
-	window, err := GetDislogStyle("window")
+	window, err := GetDislogStyle(window)
 
 	if err != nil {
-		t.Error("test pattern has mistake!")
+		t.Error(err)
+	} else {
+		winButton := window.createButton()
+
+		t.Log(winButton.render())
+
+		t.Log(winButton.onClick())
 	}
-
-	winButton := window.createButton()
-
-	t.Log(winButton.render())
-
-	t.Log(winButton.onClick())
 }

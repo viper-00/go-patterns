@@ -1,14 +1,20 @@
 package abstractFactory
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // wiki: https://en.wikipedia.org/wiki/Abstract_factory_pattern
+//
+// Provides an interface for creating families of related objects.
 
-/*
- * Abstract Factory is a creational design pattern, which solves the problem of
- * provide an interface for creating families of related or dependent objects
- * without specifiying their concrete classes.
- */
+type osType int
+
+const (
+	Linux  osType = 1
+	Mac    osType = 2
+	Window osType = 3
+)
 
 type GUIFactroy interface {
 	createButton() Button
@@ -89,14 +95,15 @@ func (macos *MacosCheckbox) print() string {
 	return "Render a checkbox in a Macos style"
 }
 
-func GetGUIFactory(os string) (GUIFactroy, error) {
-	if os == "linux" {
-		return &LinuxFactory{}, nil
-	} else if os == "window" {
-		return &WindowFactory{}, nil
-	} else if os == "macos" {
-		return &MacosFactory{}, nil
+func GetGUIFactory(os osType) (GUIFactroy, error) {
+	switch os {
+	case Linux:
+		return new(LinuxFactory), nil
+	case Window:
+		return new(WindowFactory), nil
+	case Mac:
+		return new(MacosFactory), nil
+	default:
+		return nil, fmt.Errorf(fmt.Sprintf("Factory of type %d is not exist", os))
 	}
-
-	return nil, fmt.Errorf("wrong os type passed")
 }
