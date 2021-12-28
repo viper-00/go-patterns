@@ -3,14 +3,15 @@ package facade
 import "testing"
 
 func TestPattern(t *testing.T) {
+	var walletID string = "mywalletid"
+	var securityCode int = 666
 
-	walletFacade := newWalletFacade("mywalletid", 666)
-
-	if err := walletFacade.addMoneyToWallet("mywalletid", 666, 250); err != nil {
-		t.Fatalf("Error: %s\n", err.Error())
+	walletFacade := newWalletFacade(walletID, securityCode)
+	if err := walletFacade.addMoneyToWallet(walletID, securityCode, 250); err != nil {
+		t.Errorf(err.Error())
 	}
 
-	if err := walletFacade.deductMoneyFromWallet("mywalletid", 666, 66); err != nil {
-		t.Fatalf("Error: %s\n", err.Error())
+	if err := walletFacade.deductMoneyFromWallet(walletID, securityCode, 66); err != nil {
+		t.Errorf(err.Error())
 	}
 }

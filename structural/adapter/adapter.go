@@ -3,13 +3,9 @@ package adapter
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Adapter_pattern
+//
+// Allows objects with incompatible interfaces to collaborate.
 
-/*
- * Adapter is a structural design pattern that allows objects
- * with incompatible interfaces to collaborate.
- */
-
-// client
 type client struct{}
 
 func (c *client) insertLightningConnectorIntoComputer(computer computer) {
@@ -17,19 +13,16 @@ func (c *client) insertLightningConnectorIntoComputer(computer computer) {
 	computer.insertLightningPort()
 }
 
-// computer
 type computer interface {
 	insertLightningPort()
 }
 
-// mac
 type mac struct{}
 
 func (mac *mac) insertLightningPort() {
 	fmt.Println("Lightning connector is plugged into mac machine.")
 }
 
-// winidows
 type windows struct{}
 
 func (w *windows) insertUSBPort() {

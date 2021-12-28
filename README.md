@@ -40,27 +40,27 @@ Allows objects with incompatible interfaces to collaborate.
 
 ### [Bridge](./structural/bridge/bridge.go)
 
-Split a large class or a set of closely related classes into two separate hierarchies-abstraction and implementation, which can be developed independently of each other.
+Decouples an interface from its implementation so that the two can vary independently.
 
 ### [Composite](./structural/composite/composite.go)
 
-Compose objects into tree structures and then work with these structures as if they were individual objects.
+Encapsulates and provides access to a number of different objects.
 
 ### [Decorator](./structural/decorator/decorator.go)
 
-Attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
+Adds behavior to an object, statically or dynamically.
 
 ### [Facade](./structural/facade/facade.go)
 
-Provides a simplified interface to a library, a framework, or any other complex set of classes.
+Uses one type as an API to a number of others.
 
 ### [Flyweight](./structural/flyweight/flyweight.go)
 
-Fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
+Reuses existing instances of objects with similar/identical state to minimize resource usage.
 
 ### [Proxy](./structural/proxy/proxy.go)
 
-Provide a surrogate/substitute or placeholder for another object to control access to it.
+Provides a surrogate for an object to control it's actions.
 
 ## Behavioral Patterns
 

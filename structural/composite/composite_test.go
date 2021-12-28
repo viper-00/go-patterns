@@ -15,5 +15,7 @@ func TestPattern(t *testing.T) {
 	folder2.add(f3)
 	folder2.add(folder1)
 
-	folder2.search("f1")
+	if !folder2.search("f1") {
+		t.Errorf("searched value is not exist.")
+	}
 }

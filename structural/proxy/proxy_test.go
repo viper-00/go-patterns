@@ -3,21 +3,23 @@ package proxy
 import "testing"
 
 func TestPattern(t *testing.T) {
+	var responseCode int
+	var body string
 	server := newNginxServer()
 
-	appVersionUrl := "/v1/app/version"
-	userUpdateUrl := "/v1/user/update"
+	testUrl := "/getStatus"
+	testMethod := "GET"
+	errUrl := "/gerError"
 
-	getMethod := "GET"
-	postMethod := "POST"
+	responseCode, body = server.handleRequest(testUrl, testMethod)
+	t.Logf("testUrl: %s testMethod %s responseCode: %d body: %s\n", testUrl, testMethod, responseCode, body)
 
-	httpCode, body := server.handleRequest(appVersionUrl, getMethod)
-	t.Logf("Url: %s HttpCode: %d Body: %s\n", appVersionUrl, httpCode, body)
+	responseCode, body = server.handleRequest(testUrl, testMethod)
+	t.Logf("testUrl: %s testMethod %s responseCode: %d body: %s\n", testUrl, testMethod, responseCode, body)
 
-	httpCode, body = server.handleRequest(userUpdateUrl, postMethod)
-	t.Logf("Url: %s HttpCode: %d Body: %s\n", userUpdateUrl, httpCode, body)
+	responseCode, body = server.handleRequest(testUrl, testMethod)
+	t.Logf("testUrl: %s testMethod %s responseCode: %d body: %s\n", testUrl, testMethod, responseCode, body)
 
-	httpCode, body = server.handleRequest(userUpdateUrl, getMethod)
-	t.Logf("Url: %s HttpCode: %d Body: %s\n", userUpdateUrl, httpCode, body)
-
+	responseCode, body = server.handleRequest(errUrl, testMethod)
+	t.Logf("testUrl: %s testMethod %s responseCode: %d body: %s\n", testUrl, testMethod, responseCode, body)
 }

@@ -3,26 +3,21 @@ package composite
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Composite_pattern
+//
+// Encapsulates and provides access to a number of different objects.
 
-/**
- * Composite is a structural design pattern that compose objects into tree structures and
- * then work with these structures as if they were individual objects.
- */
-
-// Leaf: common interface
 type node interface {
 	search(string) bool
 }
 
-// file
 type file struct {
 	name string
 }
 
 func (f *file) search(keyword string) bool {
-	fmt.Printf("searching for keyword %s in file %s\n", keyword, f.name)
-	if keyword == f.name {
-		fmt.Println("get it")
+	fmt.Printf("searching for keyword %s in file %s\n", keyword, f.getName())
+	if keyword == f.getName() {
+		fmt.Println("got it")
 		return true
 	}
 	return false
@@ -32,7 +27,6 @@ func (f *file) getName() string {
 	return f.name
 }
 
-// folder
 type folder struct {
 	node []node
 	name string

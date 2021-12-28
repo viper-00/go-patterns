@@ -1,11 +1,8 @@
 package decorator
 
 // wiki: https://en.wikipedia.org/wiki/Decorator_pattern
-
-/**
- * Decorator is a structural design pattern that attch new behaviors to objects by
- * placing thses objects inside special wrapper objects that contain the behaviors.
- */
+//
+// Adds behavior to an object, statically or dynamically.
 
 type pizza interface {
 	getPrice() int
@@ -23,7 +20,6 @@ func (b *bigOne) getPrice() int {
 	return 50
 }
 
-// concrete decorator
 type tomatoTopping struct {
 	pizza pizza
 }
@@ -33,7 +29,6 @@ func (c *tomatoTopping) getPrice() int {
 	return pizzaPrice + 7
 }
 
-// concrete decorator
 type cheeseTopping struct {
 	pizza pizza
 }
@@ -43,7 +38,6 @@ func (c *cheeseTopping) getPrice() int {
 	return pizzaPrice + 10
 }
 
-// concrete decorator
 type pepperTopping struct {
 	pizza pizza
 }

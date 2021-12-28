@@ -3,13 +3,9 @@ package facade
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Facade_pattern
+//
+// Uses one type as an API to a number of others.
 
-/**
- * Facade is a structural design pattern that provides a simplified interface
- * to complex system of classes, library or framework.
- */
-
-// facade
 type walletFacade struct {
 	account      *account
 	wallet       *wallet
@@ -19,7 +15,7 @@ type walletFacade struct {
 }
 
 func newWalletFacade(accountID string, code int) *walletFacade {
-	fmt.Println("Starting create account")
+	fmt.Println("Start to create an account")
 	walletFacade := &walletFacade{
 		account:      newAccount(accountID),
 		wallet:       newWallet(),
@@ -27,12 +23,12 @@ func newWalletFacade(accountID string, code int) *walletFacade {
 		notification: &notification{},
 		ledger:       &ledger{},
 	}
-	fmt.Println("Account created")
+	fmt.Println("Account already created")
 	return walletFacade
 }
 
 func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amount int) error {
-	fmt.Println("Starting add money to wallet")
+	fmt.Println("Start to add some money to wallet")
 	if err := w.account.checkAccount(accountID); err != nil {
 		return err
 	}
@@ -46,7 +42,7 @@ func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amou
 }
 
 func (w *walletFacade) deductMoneyFromWallet(accountID string, securityCode int, amount int) error {
-	fmt.Println("Starting debit money from wallet")
+	fmt.Println("Start to debit money from wallet")
 
 	if err := w.account.checkAccount(accountID); err != nil {
 		return err
@@ -65,7 +61,6 @@ func (w *walletFacade) deductMoneyFromWallet(accountID string, securityCode int,
 	return nil
 }
 
-// complex subsystem parts - account
 type account struct {
 	name string
 }
@@ -76,13 +71,12 @@ func newAccount(accountName string) *account {
 
 func (a *account) checkAccount(accountName string) error {
 	if a.name != accountName {
-		return fmt.Errorf("account name is incorrect")
+		return fmt.Errorf("name of account is incorrect")
 	}
 	fmt.Println("Account verified")
 	return nil
 }
 
-// complex subsystem parts - securityCode
 type securityCode struct {
 	code int
 }
@@ -93,13 +87,12 @@ func newSecurityCode(code int) *securityCode {
 
 func (s *securityCode) checkCode(code int) error {
 	if s.code != code {
-		return fmt.Errorf("security Code is incorrect")
+		return fmt.Errorf("security code is incorrect")
 	}
 	fmt.Println("SecurityCode verified")
 	return nil
 }
 
-// complex subsystem parts - securityCode
 type wallet struct {
 	balance int
 }
@@ -123,20 +116,18 @@ func (w *wallet) debitBalance(amount int) error {
 	return nil
 }
 
-// complex subsystem parts - ledger
 type ledger struct{}
 
 func (l *ledger) makeEntry(accountID string, payType string, amount int) {
-	fmt.Printf("Make ledger entry for accountID %s with payType %s for amount %d\n", accountID, payType, amount)
+	fmt.Printf("Make a ledger entry for accountID %s with payType %s for amount %d\n", accountID, payType, amount)
 }
 
-// complex subsystem parts - notification
 type notification struct{}
 
 func (n *notification) sendWalletCreditNotification() {
-	fmt.Println("Sending wallet credit notification")
+	fmt.Println("Send a wallet credit notification")
 }
 
 func (n *notification) sendWalletDebitNotification() {
-	fmt.Println("Sending wallet debit notification")
+	fmt.Println("Send a wallet debit notification")
 }

@@ -5,19 +5,14 @@ import (
 )
 
 // wiki: https://en.wikipedia.org/wiki/Bridge_pattern
+//
+// Decouples an interface from its implementation so that the two can vary independently.
 
-/**
- * Bridge is a structural design pattern that split a large class or a set of closely related classes into two separate
- * hierarchies-abstraction and implementation, which can be developed independently of each other.
- */
-
-// computer
-type computer interface {
+type Computer interface {
 	print()
 	setPrinter(printer)
 }
 
-// mac
 type mac struct {
 	printer printer
 }
@@ -31,7 +26,6 @@ func (mac *mac) setPrinter(p printer) {
 	mac.printer = p
 }
 
-// windows
 type windows struct {
 	printer printer
 }

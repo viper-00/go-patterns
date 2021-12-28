@@ -1,17 +1,15 @@
 package proxy
 
+import "fmt"
+
 // wiki: https://en.wikipedia.org/wiki/Proxy_pattern
+//
+// Provides a surrogate for an object to control it's actions.
 
-/**
- * Proxy is a structural design pattern that provide a substitute or placeholder for another object to control acccess to it.
- */
-
-// subject - server
-type server interface {
+type Server interface {
 	handleRequest(string, string) (int, string)
 }
 
-// proxy - nginx
 type nginx struct {
 	application       *application
 	maxAllowedRequest int
@@ -34,28 +32,25 @@ func (n *nginx) handleRequest(url, method string) (int, string) {
 }
 
 func (n *nginx) checkRateLimiting(url string) bool {
-	if n.rateLimiter[url] == 0 {
+	fmt.Print(n.rateLimiter[url])
+	if _, ok := n.rateLimiter[url]; !ok {
 		n.rateLimiter[url] = 1
 		return true
 	}
-	if n.rateLimiter[url] > n.maxAllowedRequest {
+	if n.rateLimiter[url]+1 > n.maxAllowedRequest {
 		return false
 	}
 	n.rateLimiter[url] += 1
 	return true
 }
 
-// application - real subject
 type application struct{}
 
 func (a *application) handleRequest(url, method string) (int, string) {
-	if url == "/v1/app/version" && method == "GET" {
-		// to do something
+	var testUrl, testMethod string = "/getStatus", "GET"
+	if url == testUrl && method == testMethod {
 		return 200, "OK"
-	} else if url == "/v1/user/update" && method == "POST" {
-		// to do something
-		return 200, "user created"
 	}
 
-	return 404, "has error with request url and method"
+	return 404, "Not Found"
 }

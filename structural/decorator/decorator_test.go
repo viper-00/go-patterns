@@ -7,19 +7,16 @@ func TestPattern(t *testing.T) {
 
 	otherPizza := &bigOne{}
 
-	// add cheese topping
 	pizzaWithCheese := &cheeseTopping{
 		pizza: pizza,
 	}
 
-	// add tomato topping
 	pizzaWithCheeseAndTomato := &tomatoTopping{
 		pizza: pizzaWithCheese,
 	}
 
 	t.Log("Price of veggeMania with tomato and cheese topping is", pizzaWithCheeseAndTomato.getPrice())
 
-	// add pepper topping
 	pizzaWithPepper := &pepperTopping{
 		pizza: otherPizza,
 	}
