@@ -3,8 +3,8 @@ package iterator
 import "testing"
 
 func TestPattern(t *testing.T) {
-	u1 := &user{name: "zmy", age: 21}
-	u2 := &user{name: "abc", age: 30}
+	u1 := &user{name: "abc", age: 20}
+	u2 := &user{name: "efg", age: 30}
 
 	userCollection := &userCollection{users: []*user{u1, u2}}
 

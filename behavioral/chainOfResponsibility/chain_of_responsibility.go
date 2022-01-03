@@ -3,14 +3,9 @@ package chainOfResponsibility
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern
+//
+// Avoids coupling a sender to receiver by giving more than object a chance to handle the request.
 
-/**
- * Chain of responsibility is a behavioral design pattern that pass requests along a chain of
- * handlers. Upon receiving a request, each handler decides either to process the request or
- * to pass it to the next handler in the chain.
- */
-
-// handler interface - department
 type department interface {
 	execute(*patient)
 	setNext(department)
@@ -24,7 +19,6 @@ type patient struct {
 	paymentDone       bool
 }
 
-// concrete handler - reception
 type reception struct {
 	next department
 }
@@ -44,7 +38,6 @@ func (r *reception) setNext(next department) {
 	r.next = next
 }
 
-// concrete handler - doctor
 type doctor struct {
 	next department
 }
@@ -64,7 +57,6 @@ func (d *doctor) setNext(next department) {
 	d.next = next
 }
 
-// concrete handler - medical
 type medical struct {
 	next department
 }
@@ -85,7 +77,6 @@ func (m *medical) setNext(next department) {
 	m.next = next
 }
 
-// concrete handler - cashier
 type cashier struct {
 	next department
 }

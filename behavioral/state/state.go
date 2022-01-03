@@ -3,13 +3,16 @@ package state
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/State_pattern
+//
+// Encapsulates varying behavior for the same object based on its internal state
 
-/**
- * State is a behavioral design pattern that allow an object alter its behavior
- * when its internal state changes. It appears as if the object changed its class.
- */
+type state interface {
+	addItem(int) error
+	requestItem() error
+	insertMoney(money int) error
+	dispenseItem() error
+}
 
-// context - vendingMachine
 type vendingMachine struct {
 	hasItem       state
 	itemRequested state
@@ -72,15 +75,6 @@ func (v *vendingMachine) incrementItemCount(count int) {
 	v.itemCount += count
 }
 
-// state interface
-type state interface {
-	addItem(int) error
-	requestItem() error
-	insertMoney(money int) error
-	dispenseItem() error
-}
-
-// concrete state - noItemState
 type noItemState struct {
 	vendingMachine *vendingMachine
 }
@@ -103,7 +97,6 @@ func (n *noItemState) dispenseItem() error {
 	return fmt.Errorf("Item out of stock")
 }
 
-// concrete state - hasItemState
 type hasItemState struct {
 	vendingMachine *vendingMachine
 }
@@ -131,7 +124,6 @@ func (i *hasItemState) dispenseItem() error {
 	return fmt.Errorf("Please select item first")
 }
 
-// concrete state - itemRequestedState
 type itemRequestedState struct {
 	vendingMachine *vendingMachine
 }
@@ -146,7 +138,7 @@ func (i *itemRequestedState) addItem(count int) error {
 
 func (i *itemRequestedState) insertMoney(money int) error {
 	if money < i.vendingMachine.itemPrice {
-		fmt.Errorf("Inserted money is less. Please insert %d", i.vendingMachine.itemPrice)
+		return fmt.Errorf("Inserted money is less. Please insert %d", i.vendingMachine.itemPrice)
 	}
 	fmt.Println("Money entered is ok")
 	i.vendingMachine.setState(i.vendingMachine.hasMoney)
@@ -156,7 +148,6 @@ func (i *itemRequestedState) dispenseItem() error {
 	return fmt.Errorf("Please insert money first")
 }
 
-// concrete state - hasMoneyState
 type hasMoneyState struct {
 	vendingMachine *vendingMachine
 }

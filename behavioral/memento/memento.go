@@ -1,13 +1,9 @@
 package memento
 
 // wiki: https://en.wikipedia.org/wiki/Memento_pattern
+//
+// Generate an opaque token that can be used to go back to a previous state.
 
-/**
- * Memento is a behavioral design pattern that save and restore the previous state
- * of an object without revealing the details of its implementation.
- */
-
-// originator
 type originator struct {
 	state string
 }
@@ -28,7 +24,6 @@ func (o *originator) getState() string {
 	return o.state
 }
 
-// memento
 type memento struct {
 	state string
 }
@@ -37,7 +32,6 @@ func (m *memento) getSavedState() string {
 	return m.state
 }
 
-// caretaker
 type caretaker struct {
 	mementoArray []*memento
 }

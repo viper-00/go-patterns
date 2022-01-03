@@ -3,21 +3,15 @@ package observer
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Observer_pattern
+//
+// Provide a callback for notification of event/changes to data.
 
-/**
- * Observer is a behavioral design pattern that define a subscription mechanism
- * to notify multiple objects about any events that happen to the object
- * they're observing.
- */
-
-// subject
-type subject interface {
+type Subject interface {
 	register(Observer observer)
 	deregister(Observer observer)
 	notifyAll()
 }
 
-// concrete subject - item
 type item struct {
 	observerList []observer
 	name         string
@@ -52,9 +46,9 @@ func (i *item) notifyAll() {
 
 func removeFromSlice(observerList []observer, observerToRemove observer) []observer {
 	len := len(observerList)
+	targetID := observerToRemove.getID()
 	for i, observer := range observerList {
-		if observer.getID() == observerToRemove.getID() {
-			// remove item from index position, item is disorder
+		if observer.getID() == targetID {
 			lastItem := observerList[len-1]
 			observerList[len-1] = observerList[i]
 			observerList[i] = lastItem
@@ -64,13 +58,11 @@ func removeFromSlice(observerList []observer, observerToRemove observer) []obser
 	return observerList
 }
 
-// observer
 type observer interface {
 	update(string)
 	getID() string
 }
 
-// concrete observer - customer
 type customer struct {
 	id string
 }
@@ -83,7 +75,6 @@ func (c *customer) getID() string {
 	return c.id
 }
 
-// concrete observer - employee
 type employee struct {
 	id string
 }

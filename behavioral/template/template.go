@@ -1,15 +1,13 @@
-package templatemethod
+package template
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // wiki: https://en.wikipedia.org/wiki/Template_method_pattern
+//
+// Defines a skeleton class which defers some methods to subclasses.
 
-/**
- * Template Method is a behavioral deisng pattern that defindes the skeleton of an algorithm in the superclass
- * but lets subclsses override specific steps of the algorithm without changing its structure.
- */
-
-// template method - otp
 type iOtp interface {
 	genRandomOTP(int) string
 	saveOTPCache(string)
@@ -34,13 +32,11 @@ func (o *otp) genAndSendOTP(otpLength int) error {
 	return nil
 }
 
-// concrete implementation - sms
 type sms struct {
-	otp
 }
 
 func (s *sms) genRandomOTP(len int) string {
-	randomOTP := "1234"
+	randomOTP := "random_otp"
 	fmt.Printf("SMS: generating random otp %s\n", randomOTP)
 	return randomOTP
 }
@@ -62,13 +58,11 @@ func (s *sms) publishMetric() {
 	fmt.Printf("SMS: publishing metrics\n")
 }
 
-// concrete implementation - email
 type email struct {
-	otp
 }
 
 func (s *email) genRandomOTP(len int) string {
-	randomOTP := "1234"
+	randomOTP := "random_otp"
 	fmt.Printf("EMAIL: generating random otp %s\n", randomOTP)
 	return randomOTP
 }

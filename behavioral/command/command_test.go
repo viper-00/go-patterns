@@ -3,7 +3,7 @@ package command
 import "testing"
 
 func TestPattern(t *testing.T) {
-	tv := &tv{}
+	tv := new(tv)
 
 	onCommand := &onCommand{device: tv}
 

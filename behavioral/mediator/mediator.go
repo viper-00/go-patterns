@@ -3,20 +3,20 @@ package mediator
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Mediator_pattern
+//
+// Connects objects and acts as a proxy.
 
-/**
- * Mediator is a behavioral design pattern that reduces coupling between components of a program by making
- * them communicate indirectly through a special madiator object.
- */
-
-// component - train
 type train interface {
 	arrive()
 	depart()
 	permitArrival()
 }
 
-// concrete component - passengerTrain
+type mediator interface {
+	canArrive(train) bool
+	notifyAboutDeparture()
+}
+
 type passengerTrain struct {
 	mediator mediator
 }
@@ -27,7 +27,7 @@ func (p *passengerTrain) arrive() {
 		return
 	}
 
-	fmt.Println("PassengerTrain: Arrived")
+	fmt.Println("PassengerTrain: Arriving")
 }
 
 func (p *passengerTrain) depart() {
@@ -40,7 +40,6 @@ func (p *passengerTrain) permitArrival() {
 	p.arrive()
 }
 
-// concrete component - freightTrain
 type freightTrain struct {
 	mediator mediator
 }
@@ -50,7 +49,7 @@ func (f *freightTrain) arrive() {
 		fmt.Println("FreightTrain: Arrival blocked, waiting")
 		return
 	}
-	fmt.Println("FreightTrain: Arrived")
+	fmt.Println("FreightTrain: Arriving")
 }
 
 func (f *freightTrain) depart() {
@@ -63,13 +62,6 @@ func (f *freightTrain) permitArrival() {
 	f.arrive()
 }
 
-// mediator interface - mediator
-type mediator interface {
-	canArrive(train) bool
-	notifyAboutDeparture()
-}
-
-// concrete mediator - stationManager
 type stationManager struct {
 	isPlatformFree bool
 	trainQueue     []train

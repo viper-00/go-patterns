@@ -68,43 +68,43 @@ Behavioral Patterns are about identifying common communication patterns between 
 
 ### [Chain of Responsibility](./behavioral/chainOfResponsibility/chain_of_responsibility.go)
 
-Pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
+Avoids coupling a sender to receiver by giving more than object a chance to handle the request.
 
 ### [Command](./behavioral/command/command.go)
 
-Turns a request into a stand-alone object that contains all information about the request. This transformation pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
-
-### [Iterator](./behavioral/iterator/iterator.go)
-
-Traverse elements of a collection without exposing its underlying representation(list, stack, tree, etc).
+Bundles a command and arguments to call later.
 
 ### [Mediator](./behavioral/mediator/mediator.go)
 
-Reduces coupling between components of a program by making them communicate indirectly, through a speacial mediator object.
+Connects objects and acts as a proxy.
 
 ### [Memento](./behavioral/memento/memento.go)
 
-Save and restore the previous state of an object without revealing the details of its implementation.
+Generate an opaque token that can be used to go back to a previous state.
 
 ### [Observer](./behavioral/observer/observer.go)
 
-Define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.
+Provide a callback for notification of event/changes to data.
 
 ### [State](./behavioral/state/state.go)
 
-Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
+Encapsulates varying behavior for the same object based on its internal state.
 
 ### [Strategy](./behavioral/strategy/strategy.go)
 
-Define a family of algorithms, put each of time into a separate class, and make their objects interchangeable.
+Enables an algorithm's behavior to be selected at runtime.
 
-### [Template Method](./behavioral/templateMethod/template_method.go)
+### [Template](./behavioral/template/template.go)
 
-Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+Defines a skeleton class which defers some methods to subclasses.
 
-#### [Visitor](./behavioral/visitor/visitor.go)
+### [Visitor](./behavioral/visitor/visitor.go)
 
-Separate algorithms from the objects on which they operate.
+Separates an algorithm from an object on which it operates.
+
+### [Iterator](./behavioral/iterator/iterator.go)
+
+Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
 ## Synchronization Pattern
 

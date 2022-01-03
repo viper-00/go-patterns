@@ -14,7 +14,7 @@ func TestPattern(t *testing.T) {
 	reception := &reception{}
 	reception.setNext(doctor)
 
-	patient := &patient{name: "zmy"}
+	patient := &patient{name: "name"}
 
 	t.Log("patient visiting first")
 	reception.execute(patient)

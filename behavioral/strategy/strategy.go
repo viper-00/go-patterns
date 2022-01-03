@@ -3,42 +3,34 @@ package strategy
 import "fmt"
 
 // wiki: https://en.wikipedia.org/wiki/Strategy_pattern
+//
+// Enables an algorithm's behavior to be selected at runtime.
 
-/**
- * Strategy is a behavioral design pattern that define a family of algorithms, put each of them
- * into a separate class, and make their objects interchangeable.
- */
-
-// strategy interface - evictionAlgo
 type evictionAlgo interface {
 	evict(c *cache)
 }
 
-// concrete strategy - fifo
 type fifo struct {
 }
 
 func (l *fifo) evict(c *cache) {
-	fmt.Println("Evicting by fifo strtegy")
+	fmt.Println("Evicting by fifo strategy")
 }
 
-// concrete strategy - lru
 type lru struct {
 }
 
 func (l *lru) evict(c *cache) {
-	fmt.Println("Evicting by lru strtegy")
+	fmt.Println("Evicting by lru strategy")
 }
 
-// concrete strategy - lfu
 type lfu struct {
 }
 
 func (l *lfu) evict(c *cache) {
-	fmt.Println("Evicting by lfu strtegy")
+	fmt.Println("Evicting by lfu strategy")
 }
 
-// context - cache
 type cache struct {
 	storage      map[string]string
 	evictionAlgo evictionAlgo
@@ -47,9 +39,8 @@ type cache struct {
 }
 
 func initCache(e evictionAlgo) *cache {
-	storage := make(map[string]string)
 	return &cache{
-		storage:      storage,
+		storage:      make(map[string]string),
 		evictionAlgo: e,
 		capacity:     0,
 		maxCapacity:  2,
@@ -66,10 +57,6 @@ func (c *cache) add(key, value string) {
 	}
 	c.capacity++
 	c.storage[key] = value
-}
-
-func (c *cache) get(key string) {
-	delete(c.storage, key)
 }
 
 func (c *cache) evict() {
